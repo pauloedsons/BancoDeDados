@@ -11,3 +11,21 @@
  select distinct cargo from funcionario
 
  select nome, cargo ,  (salario + 7/100)  as  SalarioDissidio from funcionario 
+ 
+ -------------------------------------------------------------------------------------------------------
+
+select * from HR.Employees where birthdate between '19620101' and '20110131'
+
+select * from HR.Employees where birthdate >= '19620101' and  birthdate <= '20110131' -- predicados -- 
+
+select * from HR.Employees where empid in (3,7,9) -- predicados 
+
+select * from HR.Employees where empid = 3 or empid = 7 or empid = 9 -- 
+
+ select * from HR.Employees WHERE firstname LIKE 'S%' -- predicados 
+
+ SELECT * FROM HR.Employees where firstname  is not null 
+
+ select title,empid,birthdate from HR.Employees  where birthdate between '19630101' and '19700101' order by title desc
+
+
