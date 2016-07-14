@@ -1,0 +1,13 @@
+ select  5/2 from funcionario 
+ 
+ select  200 + ((500 / 20) * 10.5)  from funcionario
+
+ select top(100)  nome,email  from funcionario
+ 
+ select nome + sobrenome as NomeCompleto from funcionario 
+ 
+ select matricula, nome + sobrenome , (salario + Bonus) as  SalarioTotal from funcionario
+
+ select distinct cargo from funcionario
+
+ select nome, cargo ,  (salario + 7/100)  as  SalarioDissidio from funcionario 
