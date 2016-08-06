@@ -27,5 +27,6 @@ select * from HR.Employees where empid = 3 or empid = 7 or empid = 9 --
  SELECT * FROM HR.Employees where firstname  is not null 
 
  select title,empid,birthdate from HR.Employees  where birthdate between '19630101' and '19700101' order by title desc
+ ---------------------------------------------------------------------------------------------------------------------------
 
 
