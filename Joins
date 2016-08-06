@@ -1,0 +1,15 @@
+--Retornar os apelidos número do pedido (orderid), 
+ --data do pedido (orderdate), nome do contato (contactname) e o país (country). 
+ 
+ select 
+ O.orderid as 'Número do produto', 
+ Ord.orderdate as 'Data do pediodo', 
+ C.contactname as 'Nome do contato', 
+ C.country as 'País'
+ from 
+  Sales.OrderDetails as O 
+ join
+ Sales.Orders as Ord on O.orderid = Ord.orderid
+ join 
+ Sales.Customers as C on C.custid = Ord.custid
+ --------------------------------------------------------------------------------------
