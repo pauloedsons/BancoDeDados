@@ -13,3 +13,43 @@
  join 
  Sales.Customers as C on C.custid = Ord.custid
  --------------------------------------------------------------------------------------
+  --Retornar os apelidos data do pedido (orderdate), nome do contato (contactname),
+ -- nome completo do empregado (firstname/lastname) e país do empregado (country), 
+ --onde o país do empregado seja Inglaterra. 
+
+ select 
+ Ord.orderdate as 'Data do pediodo',
+ C.contactname as 'Nome do contato',
+ E.firstname + E.lastname as 'Nome completo do Empregado',
+ C.country as 'País',
+ E.country as 'País'
+ from Sales.Orders as Ord 
+ join
+ Sales.Customers as C on C.custid = Ord.custid
+ join
+ HR.Employees as E on E.empid = Ord.empid 
+ where  E.country = 'UK' 
+
+ select * from Sales.Customers where country = 'Brazil'
+
+ --Retornar os apelidos número do pedido (orderid), data do pedido (orderdate), 
+ --nome do contato do cliente (contactname), nome completo do empregado (firstname/lastname) e
+ -- país do cliente (country), 
+ --onde o país do cliente seja Brasil, ordernado pela data do pedido mais recente. 
+
+ SELECT 
+ Ord.orderid as 'Número do pedido',
+ Ord.orderdate as 'Data do pediodo', 
+ C.contactname as 'Nome do contato',
+ E.firstname + E.lastname as 'Nome completo do Empregado',
+ C.country as 'País'
+ from 
+ Sales.Orders as Ord 
+ join 
+ Sales.Customers as C on C.custid = Ord.custid
+ join
+ HR.Employees as E on E.empid = Ord.empid
+ where C.country  = 'Brazil'
+ ORDER BY  Ord.orderdate  asc
+  
+
