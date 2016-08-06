@@ -51,5 +51,41 @@
  HR.Employees as E on E.empid = Ord.empid
  where C.country  = 'Brazil'
  ORDER BY  Ord.orderdate  asc
+ ------------------------------------------------------------------------------------------------------------
+ --Retornar os apelidos número do pedido (orderid),
+-- data do pedido (orderdate),
+-- nome do contato (contactname),
+ --nome completo do empregado (firstname/lastname),
+-- país do empregado (country) 
+--e nome da empresa de entrega,
+-- onde
+-- o país do empregado seja Estados Unidos e a empresa de entrega seja
+-- Shipper ETYNR ou Shipper GVSUA. Ordene pelo número do pedido. 
+
+select 
+Ord.orderid as 'Número do pedido',
+ Ord.orderdate as 'Data do pediodo', 
+ C.contactname as 'Nome do contato',
+ E.firstname + E.lastname as 'Nome completo do Empregado',
+ E.country as 'País',
+ S.companyname as 'Nome da Empresa'
+ FROM
+ Sales.Orders as Ord 
+ join 
+ Sales.Customers as C on C.custid = Ord.custid
+ join
+ HR.Employees as E on E.empid = Ord.empid
+ join
+ Sales.Shippers as S on Ord.shipperid = S.shipperid
+ where E.country = 'USA' AND S.companyname = 'Shipper ETYNR' 
+ order by
+ Ord.orderid asc
+
+ 
+ 
+ 
+ 
+ 
+ 
   
 
