@@ -80,7 +80,7 @@ Ord.orderid as 'Número do pedido',
  where E.country = 'USA' AND S.companyname = 'Shipper ETYNR' 
  order by
  Ord.orderid asc
- 
+ ------------------------------------------------------------------------------------------------------------------------------------------
  
 --Retorne todas informações de Produtos e o nome da categoria, onde esta seja Beverages 
 --e o preço do produto (unitprice) seja menor que 30, ordenado pelo preço de forma descendente.  
@@ -118,9 +118,45 @@ select
    --TESTANDO AQUI - DUVIDA
    select * from Production.Categories where 
    categoryname = 'Beverages' 
+   
+   
+   --------------------------------------------------------------------------------------------------------------------------------------
  
  
- 
+ --Retorne os apelidos, nome do produto (productname), nome da empresa de entrega 
+--(companyname) e a quantidade de produtos (qty),
+
+ --E,..
+  
+--quando essa ultrapassar 100 unidades. Ordene pelo nome do produto ascendente 
+--e quantidade de forma descendente. 
+
+SELECT  
+P.productname as 'Nome do Produto',
+C.companyname as 'Nome da Empresa',
+Ord.qty as 'Quantidade de Produtos'
+
+from 
+
+Production.products as P 
+JOIN
+Sales.OrderDetails as Ord
+on
+Ord.productid = P.productid
+
+JOIN 
+
+Sales.Orders as O 
+on
+O.orderid = Ord.orderid
+JOIN
+Sales.Customers as C 
+on 
+C.custid = O.custid
+where 
+Ord.qty > 100 
+order by P.productname asc, Ord.qty desc
+------------------------------------------------------------------------------------------------------------------------------------------------------------
  
  
   
