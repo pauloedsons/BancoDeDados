@@ -82,14 +82,9 @@ Ord.orderid as 'Número do pedido',
  Ord.orderid asc
  
  
- 
- 
- 
- 
 --Retorne todas informações de Produtos e o nome da categoria, onde esta seja Beverages 
 --e o preço do produto (unitprice) seja menor que 30, ordenado pelo preço de forma descendente.  
-
-select                                    select * from Production.Products
+select                                   
   P.productid,
   P.productname,
   P.supplierid, 
@@ -97,22 +92,32 @@ select                                    select * from Production.Products
   P.unitprice,
   P.discontinued,
   S.companyname
-   from Production.Products as P 
+   from Production.Categories as C 
+   JOIN
+   Production.Products as P 
+   ON
+   C.categoryid = P.categoryid
    JOIN
    Sales.OrderDetails as Ord
    on
    P.productid = Ord.productid
    JOIN
-   Sales.Orders as O 
-   on 
+   Sales.Orders as O
+   ON
    O.orderid = Ord.orderid
    JOIN
-   Sales.Shippers as S 
-   on
-   S.shipperid = O.shipperid where 
-   companyname = 'Beverages' and unitprice < 30 order by unitprice desc
+   Sales.Shippers as S
+   ON
+   S.shipperid = O.shipperid 
+   where 
+   C.categoryname = 'Beverages'  
+   and P.unitprice < 30 order by P.unitprice desc
 
- 
+   
+
+   --TESTANDO AQUI - DUVIDA
+   select * from Production.Categories where 
+   categoryname = 'Beverages' 
  
  
  
