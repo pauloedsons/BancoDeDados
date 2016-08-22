@@ -80,6 +80,37 @@ Ord.orderid as 'Número do pedido',
  where E.country = 'USA' AND S.companyname = 'Shipper ETYNR' 
  order by
  Ord.orderid asc
+ 
+ 
+ 
+ 
+ 
+ 
+--Retorne todas informações de Produtos e o nome da categoria, onde esta seja Beverages 
+--e o preço do produto (unitprice) seja menor que 30, ordenado pelo preço de forma descendente.  
+
+select                                    select * from Production.Products
+  P.productid,
+  P.productname,
+  P.supplierid, 
+  P.categoryid, 
+  P.unitprice,
+  P.discontinued,
+  S.companyname
+   from Production.Products as P 
+   JOIN
+   Sales.OrderDetails as Ord
+   on
+   P.productid = Ord.productid
+   JOIN
+   Sales.Orders as O 
+   on 
+   O.orderid = Ord.orderid
+   JOIN
+   Sales.Shippers as S 
+   on
+   S.shipperid = O.shipperid where 
+   companyname = 'Beverages' and unitprice < 30 order by unitprice desc
 
  
  
