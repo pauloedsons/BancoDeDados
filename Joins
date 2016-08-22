@@ -158,6 +158,39 @@ Ord.qty > 100
 order by P.productname asc, Ord.qty desc
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
  
+ -- Retorne os apelidos, 
+--nome do contato do cliente (contactname),
+-- nome do produto (productname),
+-- quantidade de produtos (qty),
+-- data do pedido (orderdate) e cidade do fornecedor (city), 
+---------------------------------------------------------------------------
+-- onde a data do pedido seja todo o mês de julho de 2006,
+--  a quantidade de produtos seja maior ou igual a 20 e menor que 60,
+--  o nome do produto inicie por Product A ou Product G,
+--  o nome da cidade do fornecedor seja Stockholm, Sydney, 
+-- Sandvika ou Ravenna. 
+-- Ordene pelo número do empregado (empid) de forma descendente 
+---------------------------------------------------------------------------
+ SELECT
+ C.contactname as 'Contato do cliente',
+ P.productname as 'Nome do produto',
+ Ord.qty as 'Quantidade de produto',
+ O.orderdate as 'Datado pedido',
+ S.City as 'Cidade do fornecedor',
+ E.empid as 'Número de empregados'
+ FROM 
+ E.Employees as E 
+ Join
+ Sales.Orders as O on 
+ O.orderid = E.orderid
+ Join 
+
  
+  
+
+ where P.productname LIKE '%A' and Ord.qty >= 20 and Ord.qty < 60
+ AND
+S.city = 'Stockholm' order by 
+
   
 
